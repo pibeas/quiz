@@ -32,13 +32,13 @@ exports.index = function(req, res, next) {
 
 	if (req.query.search !== undefined && req.query.tema !== undefined){
 		 options.where = {
-                      pregunta: {$like: '%'+req.query.search.replace(' ','%')+'%'},
-                      tema: {$like: '%'+req.query.tema+'%'}
+                      pregunta: {$ilike: '%'+req.query.search.replace(' ','%')+'%'},
+                      tema: {$ilike: '%'+req.query.tema+'%'}
                     };
 	} else if (req.query.search !== undefined){
-      options.where = { pregunta: {$like: '%'+req.query.search.replace(' ','%')+'%'}};
+      options.where = { pregunta: {$ilike: '%'+req.query.search.replace(' ','%')+'%'}};
   } else if (req.query.tema !== undefined){
-      options.where = { tema: {$like: '%'+req.query.tema+'%'}};
+      options.where = { tema: {$ilike: '%'+req.query.tema+'%'}};
   }
 
 
