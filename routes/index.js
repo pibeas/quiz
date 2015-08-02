@@ -8,6 +8,13 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz' });
 });
 
+/* GET créditos. */
+router.get('/author', function(req, res) {
+  res.render('author', { autor: 'Pedro Ibeas',
+  						 foto: '/images/foto.jpg'
+			});
+});
+
 // Autoload de comandos con ids
 router.param('quizId', quizController.load);  // autoload :quizId
 
