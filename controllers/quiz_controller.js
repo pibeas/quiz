@@ -31,7 +31,7 @@ exports.index = function(req, res) {
 	var options = {};
 
 	if (req.query.search!==undefined){
-		 options.where = {pregunta: {$like: '%'+req.query.search+'%'}};
+		 options.where = {pregunta: {$ilike: '%'+req.query.search+'%'}};
 	}
 
 	models.Quiz.findAll(options).then(function(quizes){
