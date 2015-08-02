@@ -11,7 +11,8 @@ router.get('/', function(req, res) {
 /* GET créditos. */
 router.get('/author', function(req, res) {
   res.render('author', { autor: 'Pedro Ibeas',
-  						 foto: '/images/foto.jpg'
+  						 foto: '/images/foto.jpg',
+  						 errors: []
 			});
 });
 
