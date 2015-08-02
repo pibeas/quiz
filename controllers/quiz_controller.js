@@ -28,7 +28,13 @@ exports.answer = function(req, res) {
 
 //GET /quizes
 exports.index = function(req, res) {
-	models.Quiz.findAll().then(function(quizes){
+	var options = {};
+
+	if (req.query.search!==undefined){
+		 options.where = {pregunta: {$like: '%'+req.query.search+'%'}};
+	}
+
+	models.Quiz.findAll(options).then(function(quizes){
 		res.render('quizes/index.ejs', { quizes: quizes});
 	}).catch(function(error){next(error)});
 };
