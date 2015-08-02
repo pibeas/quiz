@@ -20,7 +20,7 @@ exports.show = function(req, res) {
 //GET /quizes/answer
 exports.answer = function(req, res) {
 	var resultado='Incorrecto';
-	if  (req.query.respuesta === req.quiz.respuesta) {
+	if  (req.query.respuesta.trim().toLowerCase() === req.quiz.respuesta.trim().toLowerCase()) {
 		resultado='Correcto';
 	}
 	res.render('quizes/answer', {quiz: req.quiz, respuesta: resultado, errors: []});
