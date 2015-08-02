@@ -27,11 +27,11 @@ exports.answer = function(req, res) {
 };
 
 //GET /quizes
-exports.index = function(req, res) {
+exports.index = function(req, res, next) {
 	var options = {};
 
 	if (req.query.search!==undefined){
-		 options.where = {pregunta: {$ilike: '%'+req.query.search+'%'}};
+		 options.where = {pregunta: {$ilike: '%'+req.query.search.replace(' ','%')+'%'}};
 	}
 
 	models.Quiz.findAll(options).then(function(quizes){
